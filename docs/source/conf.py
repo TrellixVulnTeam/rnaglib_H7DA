@@ -20,8 +20,8 @@ print(sys.path)
 # -- Project information -----------------------------------------------------
 
 project = 'rnaglib'
-copyright = '2021, Vincent Mallet'
-author = 'Vincent Mallet'
+copyright = '2021, Vincent Mallet, Carlos Oliver'
+author = 'Vincent Mallet, Carlos Oliver'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
@@ -33,6 +33,7 @@ release = '0.0.1'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc']
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

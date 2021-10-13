@@ -68,8 +68,10 @@ def annotate_proteinSSE(g, structure, pdb_file):
 
 
 def load_graph(json_file):
-    """
-    load DSSR graph from JSON
+    """Load DSSR graph from JSON
+    :param Path to JSON file
+    :type str
+    :returns networkx graph
     """
     pbid = json_file[-9:-5]
     with open(json_file, 'r') as f:
@@ -80,8 +82,11 @@ def load_graph(json_file):
     return g
 
 def write_graph(g, json_file):
-    """
-    write graph to JSON
+    """Write networkx graph to JSON.
+    :param g: networkx graph
+    :type networkx.Graph
+    :param json_file: path to dump JSON graph
+    :type: string
     """
     d = nx.readwrite.json_graph.node_link_data(g)
     with open(json_file, 'w') as f:
@@ -92,7 +97,14 @@ def write_graph(g, json_file):
 def annotate_graph(g, annots):
     """
     Add node annotations to graph from annots
-    nodes without a value recieve None type
+    nodes without a value recieve None type.
+
+    :param g: networkx graph
+    :type: networkx.Graph
+    :param annots: dictionary with node annotations
+    :type: dictionary
+
+    :returns g: graph with node annotations
     """
 
     labels = {'binding_ion': 'ion',
@@ -112,6 +124,9 @@ def parse_interfaces(interfaces,
                     types=['ion', 'ligand']):
     """
     parse output from get_interfaces into a dictionary
+
+    :param interfaces: list of interface output
+    :type list
     """
     annotations = defaultdict(dict)
 
@@ -124,8 +139,11 @@ def parse_interfaces(interfaces,
 
 
 def load_csv_annot(csv_file, pbids=None, types=None):
-    """
-    Get annotations from csv file, parse into a dictionary
+    """Get annotations from csv file, parse into a dictionary
+    :param csv_file: path to CSV containing annotations
+    :type str
+    :param: pdbids: list of PDBids to process
+    :type str
     """
     annotations = defaultdict(dict)
     with open(csv_file, 'r') as f:
@@ -147,6 +165,13 @@ def annotate_graphs(graph_dir, csv_file, output_dir,
                     ):
     """
     add annotations from csv_file to all graphs in graph_dir
+
+    :param graph_dir: folder to read graphs from
+    :type str: path to graph folder
+    :param csv_file: csv file containing annotations
+    :type str
+    :param output_dir: folder to dump annotated files
+    :type str
     """
     annotations = load_csv_annot(csv_file)
 

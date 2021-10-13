@@ -151,6 +151,9 @@ def base_pair_swap(pairs):
     {'index': 18, 'nt1': 'A.U17', 'nt2': 'A.G20', 'bp': 'U+G', 'name': '--', 'Saenger': '--', 'LW': 'tSW', 'DSSR': 'tm+W'}
 
     For now not swapping 'Saenger' and 'DSSR'.
+
+    :param pairs: base pairs to add in the base pair in the other direction.
+    :type dict
     """
     new_pairs = []
     for pair in pairs:
@@ -164,7 +167,10 @@ def base_pair_swap(pairs):
     return pairs + new_pairs
 
 def get_graph_data(annots, mmcif_data=None):
-    """ For now only return the dot-bracket notation."""
+    """ Add graph-level data to graph.
+    :param annots: dictionary containing annotations
+    :type dict:
+    """
 
     def recursive_dd():
         return defaultdict(recursive_dd)
@@ -194,6 +200,13 @@ def annot_2_graph(annot, rbp_annot, pdbid, mmcif_data=None):
         'hairpins', 'num_bulges', 'bulges', 'num_splayUnits', 'splayUnits',
         'dbn', 'chains', 'num_nts', 'nts', 'num_hbonds', 'hbonds',
         'refCoords', 'metadata']
+
+    :param annot: dictionary containing annotations
+    :type dict:
+    :param rbp_annot: annotations from protein interfaces
+    :type dict:
+    :param pdbid: ID of RNA to process.
+    :type str:
     """
 
     G = nx.DiGraph()
@@ -264,6 +277,10 @@ def annot_2_graph(annot, rbp_annot, pdbid, mmcif_data=None):
     return G
 
 def build_one(cif):
+    """ Build annotations for one structure
+    :param cif: path to structure to build graph for.
+    :type str:
+    """
     exit_code, annot = dssr_exec(cif)
     rbp_exit_code, rbp_out = snap_exec(cif)
     mmcif_info = mmcif_data(cif)

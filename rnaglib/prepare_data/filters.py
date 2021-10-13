@@ -21,9 +21,11 @@ from prepare_data.annotations import load_graph, write_graph
 
 def listdir_fullpath(d):
         return [os.path.join(d, f) for f in os.listdir(d)]
+
 def get_NRlist(resolution):
-    """
-    Get non-redudant RNA list from the BGSU website
+    """Get non-redudant RNA list from the BGSU website
+    :param resolution: minimum resolution to filter structures
+    :type float:
     """
 
     base_url = 'http://rna.bgsu.edu/rna3dhub/nrlist/download'
@@ -184,6 +186,12 @@ def get_Custom(text):
 
 # fltrs = ['NR', 'Ribo', 'NonRibo'],
 def filter_all(graph_dir, output_dir,
+    """ Apply filters to grpahs in a given folder and dump results.
+    :param graph_dir: folder containing graphs to filter
+    :type str:
+    :param output_dir: folder to dump filtered
+    :type str:
+    """
         filters= ['NR'],
         min_nodes = 20):
 

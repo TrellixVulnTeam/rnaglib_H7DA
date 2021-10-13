@@ -10,7 +10,18 @@ Welcome to rnaglib's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+  rnaglib.benchmark
+  rnaglib.config
+  rnaglib.data
+  rnaglib.data_loading
   rnaglib.drawing
+  rnaglib.kernels
+  rnaglib.examples
+  rnaglib.ged
+  rnaglib.learning
+  rnaglib.prepare_data
+  rnaglib.utils
+
 
 Indices and tables
 ==================

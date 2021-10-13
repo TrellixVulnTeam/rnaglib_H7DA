@@ -4,6 +4,9 @@ import pickle
 
 from tqdm import tqdm
 
+"""
+Helper script to make sure all the hashed graphlets are in a given hashtable"""
+
 data_folder = sys.argv[1]
 
 datasets = ['all_graphs_annot']
